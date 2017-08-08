@@ -13,8 +13,10 @@ var socketList = [];
 
 loadBots();
 
+botConfig = [];
+
 function loadBots() {
-    botConfig = [];
+
     const bots = [{
             botName: 'quote-bot-demo',
             botSecret: 'r2_eoVPtrNI.cwA.gzc.7ax_Wvx70lanile7IAq5P69Rl9vF6rylTd8v3r0iF2w',
