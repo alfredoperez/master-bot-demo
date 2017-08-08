@@ -9,10 +9,7 @@ var fetch = require('node-fetch');
 var verboseOutput = false;
 var socketList = [];
 
-// get database connection
-var Connection = require('tedious').Connection;
-var Request = require('tedious').Request;
-var TYPES = require('tedious').TYPES;
+
 
 loadBots();
 
