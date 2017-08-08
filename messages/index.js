@@ -3,7 +3,7 @@ var builder = require("botbuilder");
 var botbuilder_azure = require("botbuilder-azure");
 var websocket = require("websocket");
 
-var useConsole = true;
+var useConsole = false;
 var useEmulator = (process.env.NODE_ENV == 'development');
 var fetch = require('node-fetch');
 var verboseOutput = false;
