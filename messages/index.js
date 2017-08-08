@@ -42,7 +42,7 @@ function loadBots() {
             watermark: 0,
             convId: "",
             streamUrl: "",
-            botKeyWords: ['quote', 'quotes']
+            botKeyWords: 'quote quotes'
         },
         {
             botName: 'Locator-bot-demo',
