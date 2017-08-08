@@ -10,13 +10,31 @@ var verboseOutput = false;
 var socketList = [];
 
 
+var connector;
+
+if (useConsole == false) {
+    connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure.BotServiceConnector({
+        appId: process.env['MicrosoftAppId'],
+        appPassword: process.env['MicrosoftAppPassword'],
+        stateEndpoint: process.env['BotStateEndpoint'],
+        openIdMetadata: process.env['BotOpenIdMetadata']
+    });
+} else {
+    connector = new builder.ConsoleConnector().listen();
+}
+
+var bot = new builder.UniversalBot(connector);
+
+var intents = new builder.IntentDialog();
+bot.dialog("/", intents);
+
+// configuration info, TODO: load a default config from external source? Load config based on user connecting?
+var botConfig = [];
+var currentBot = null; // which child bot are we talking to
 
 loadBots();
 
-var botConfig = [];
-
 function loadBots() {
-
     const bots = [{
             botName: 'quote-bot-demo',
             botSecret: 'r2_eoVPtrNI.cwA.gzc.7ax_Wvx70lanile7IAq5P69Rl9vF6rylTd8v3r0iF2w',
@@ -49,28 +67,6 @@ function loadBots() {
     addBot(null, bots[1], botConfig);
     addBot(null, bots[2], botConfig);
 }
-
-var connector;
-
-if (useConsole == false) {
-    connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure.BotServiceConnector({
-        appId: process.env['MicrosoftAppId'],
-        appPassword: process.env['MicrosoftAppPassword'],
-        stateEndpoint: process.env['BotStateEndpoint'],
-        openIdMetadata: process.env['BotOpenIdMetadata']
-    });
-} else {
-    connector = new builder.ConsoleConnector().listen();
-}
-
-var bot = new builder.UniversalBot(connector);
-
-var intents = new builder.IntentDialog();
-bot.dialog("/", intents);
-
-// configuration info, TODO: load a default config from external source? Load config based on user connecting?
-var botConfig = [];
-var currentBot = null; // which child bot are we talking to
 
 // clear the current configuration
 intents.matches(/^masterbot clearconfig/i, [
