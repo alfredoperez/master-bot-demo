@@ -42,7 +42,7 @@ function loadBots() {
             watermark: 0,
             convId: "",
             streamUrl: "",
-            botKeyWords: 'quote quotes'
+            botKeyWords: 'Quote'
         },
         {
             botName: 'Locator-bot-demo',
@@ -51,7 +51,7 @@ function loadBots() {
             watermark: 0,
             convId: "",
             streamUrl: "",
-            botKeyWords: 'locator'
+            botKeyWords: 'Place'
         },
         {
             botName: 'bot-qna-demo',
@@ -60,7 +60,7 @@ function loadBots() {
             watermark: 0,
             convId: "",
             streamUrl: "",
-            botKeyWords: 'faq'
+            botKeyWords: 'FAQ'
         }
     ];
     addBot(null, bots[0], botConfig);
