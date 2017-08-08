@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "botbuilder": "^3.7.0",
-    "botbuilder-azure": "3.0.2"
+    "botbuilder-azure": "3.0.2",
+    "node-fetch": "^1.6.3",
+    "websocket": "^1.0.24"
   },
   "devDependencies": {
       "restify": "^4.1.1"
