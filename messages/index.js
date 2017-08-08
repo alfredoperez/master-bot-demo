@@ -13,7 +13,7 @@ var socketList = [];
 
 loadBots();
 
-botConfig = [];
+var botConfig = [];
 
 function loadBots() {
 
