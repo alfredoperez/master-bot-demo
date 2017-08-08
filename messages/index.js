@@ -31,6 +31,7 @@ bot.dialog("/", intents);
 // configuration info, TODO: load a default config from external source? Load config based on user connecting?
 var botConfig = [];
 var currentBot = null; // which child bot are we talking to
+var currentBotSession;
 
 loadBots();
 
@@ -43,8 +44,7 @@ function loadBots() {
             convId: "",
             streamUrl: "",
             botKeyWords: 'Quote'
-        },
-        {
+        }, {
             botName: 'Locator-bot-demo',
             botSecret: 'XEcazlI6LaE.cwA.4Po._hsH7QA1A-SaIT_-2LBVCxG3HKYNWJ-B8EeYXJcIqnA',
             botUnknownResponse: "",
@@ -227,6 +227,7 @@ intents.onDefault([
 ]);
 
 function greeting(session) {
+    currentBotSession = session;
     if (currentBot != null) {
         sendMessage(session, currentBot);
         return;
@@ -390,6 +391,9 @@ function sendMsg(session, msg) {
     var text = msg;
     if (typeof msg.text != "undefined")
         text = msg.text;
+
+    if (session == null)
+        session = currentBotSession;
 
     if (session != null)
         session.send(text);
